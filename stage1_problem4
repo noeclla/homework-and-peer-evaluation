@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+#define DAYS 7
+#define MEMBERS 6
+#define MAX_STR 30
+
+const char *day_names[DAYS] = {
+    "Monday", "Tuesday", "Wednesday", "Thursday",
+    "Friday", "Saturday", "Sunday"
+};
+
+char condition[MEMBERS][MAX_STR];
+char workout[DAYS][MAX_STR];
+char diet[DAYS][MAX_STR];
+
+void enter_condition() {
+    for (int i = 0; i < MEMBERS; i++) {
+        printf("Member %d - Enter physical condition: ", i + 1);
+        scanf(" %[^\n]", condition[i]);
+    }
+}
+
+void view_condition() {
+    for (int i = 0; i < MEMBERS; i++) {
+        printf("Member %d: %s\n", i + 1, condition[i]);
+    }
+}
+
+void set_workout() {
+    for (int i = 0; i < DAYS; i++) {
+        printf("%s workout: ", day_names[i]);
+        scanf(" %[^\n]", workout[i]);
+    }
+}
+
+void view_workout() {
+    for (int i = 0; i < DAYS; i++) {
+        printf("%s: %s\n", day_names[i], workout[i]);
+    }
+}
+
+void set_diet() {
+    for (int i = 0; i < DAYS; i++) {
+        printf("%s diet plan: ", day_names[i]);
+        scanf(" %[^\n]", diet[i]);
+    }
+}
+
+void view_diet() {
+    for (int i = 0; i < DAYS; i++) {
+        printf("%s: %s\n", day_names[i], diet[i]);
+    }
+}
+
+int main() {
+    int choice;
+
+    while (1) {
+        printf("\n=== Millieways Health Menu ===\n");
+        printf("1. Enter Physical Condition\n");
+        printf("2. View Physical Condition\n");
+        printf("3. Set Workout Routine\n");
+        printf("4. View Workout Routine\n");
+        printf("5. Set Diet Plan\n");
+        printf("6. View Diet Plan\n");
+        printf("0. Exit\n");
+        printf("Choose: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: enter_condition(); break;
+            case 2: view_condition(); break;
+            case 3: set_workout(); break;
+            case 4: view_workout(); break;
+            case 5: set_diet(); break;
+            case 6: view_diet(); break;
+            case 0: return 0;
+            default: printf("Invalid choice.\n");
+        }
+    }
+}
